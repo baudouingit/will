@@ -1,0 +1,22 @@
+{% extends 'template.html.twig' %}
+    {% block content %}
+        <div class="row">
+            <div class="col-md-12">
+                {% form_theme form _self %}
+                {{ form(form) }}
+                {% block form_row %}
+                    <div>
+                        <div class="label">
+                            {{ form_label(form) }}
+                        </div>
+                        <div class="value">
+                            {{ form_widget(form) }}
+                        </div>
+                        <div>
+                            {{ form_errors(form) }}
+                        </div>
+                    </div>
+                {% endblock %}  {# endblock form_row #}
+            </div>
+        </div> {# end div row #}
+    {% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les prix de la critique{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container menu">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    {% image '@AppBundle/Resources/logos/logo.png' %}
+                    <img class=logo src="{{ asset_url }}" alt="logo td"/>
+                    {% endimage %}</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('app_default_accueil') }}">Home</a></li>
+                    <li><a href="{{ path('app_default_historique') }}">Historique</a></li>
+                    <li><a href="{{ path('app_default_jury') }}">Jury</a></li>
+                    <li><a href="{{ path('app_default_liens') }}">Liens</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Palmares<span
+                                    class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {{ render(controller('AppBundle:Categories:allKnownCategories')) }}
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archives<span
+                                    class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {{ render(controller('AppBundle:Categories:allYearsOnPaper')) }}
+                            {{ render(controller('AppBundle:Categories:allYearsOnWeb')) }}
+                        </ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeries<span
+                                    class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {{ render(controller('AppBundle:Categories:allGalleries')) }}
+                        </ul>
+                    </li>
+                    <li><a href="{{ path('app_default_find') }}">Recherches</a></li>
+                    <li><a href="{{ path('app_default_partenaires') }}">Partenaires</a></li>
+                </ul>
+            </div>
+
+            <div class="row" style="padding-left: 0; margin-left: 0;">
+
+                {% if app.request.attributes.get('_route') == "app_default_nomines" %}
+
+                    <div class="col-md-1 col-xs-1">
+                        <a style='float: left; background: transparent;'
+                           href="{{ path('app_default_nomines', {'domaine': prev, 'annee': annee}) }}"><h1
+                                    style="margin-left: 0;"><span
+                                        class="glyphicon glyphicon-menu-left" style="color:#b31b20;"></span></h1>
+                        </a>
+
+                    </div>
+                    <div class="col-md-10 col-xs-10 center-text">
+                        <h1 style="text-align: center;">{{ pageTitle }}</h1>
+                    </div>
+                    <div class="col-md-1 col-xs-1">
+                        <a style='float: right; background: transparent;'
+                           href="{{ path('app_default_nomines', {'domaine': next, 'annee': annee}) }}"><h1
+                            ><span
+                                        class="glyphicon glyphicon-menu-right" style="color:#b31b20"></span></h1>
+                        </a>
+                    </div>
+
+
+                {% else %}
+                    <div class="col-md-12 col-xs-12">
+                        <h1 class="titrePage" style="text-align: center;">{{ pageTitle }}</h1>
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+        {#<h1>{{ pageTitle }}</h1>#}
+    </nav>
+    <div class="container contenu">
+        <div class=row>
+            <div id="tr" class="col-md-8 col-md-offset-2 rounded transparent"></div> {# Panneau transparent sous le
+            texte #}
+            <div id="op" class="col-md-8 col-md-offset-2 rounded">
+                {% block content %}
+                    {# Ici s'insérera le texte #}
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}

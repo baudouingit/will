@@ -1,0 +1,6 @@
+{% for annee in annees %}
+    {% if annee.anneesValides > 2007 %}
+        <li><a href="{{ path('app_default_nomines', {'domaine': 'Spectacle', 'annee': annee.anneesValides,}) }}">
+                {{ annee.anneesValides - 1 }}-{{ annee.anneesValides }}</a></li>
+    {% endif %}
+{% endfor %}

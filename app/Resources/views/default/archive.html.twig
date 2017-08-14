@@ -1,0 +1,38 @@
+{% extends 'template.html.twig' %}
+    {% block content %}
+        <div class="row">
+            <div class="col-md-12">
+                {% set annee = '' %}
+                {% set domaine = '' %}
+                {% for item in archive %}
+                    {% if item.elu %}
+                        {% set elu = "elu" %}
+                    {% else %}
+                        {% set elu = "" %}
+                    {% endif %}
+                    {% if item.annee != annee %}
+                        <h1 style="margin: 0 0 0 15px;">{{ item.annee }}</h1>
+                        {% set annee = item.annee %}
+                    {% endif %}
+
+                    <div>
+                        {% if item.domaine != domaine %}
+                            <h2 class=" " style="margin: 0 0 0 15px;">{{ item.domaine }}</h2>
+                            {% set domaine = item.domaine %}
+                        {% endif %}
+                    </div>
+                    {% if item.annee < 2008 %}
+                        <p class="{{ elu }}  col-md-12 ">
+                            {{ item.nomine1 }} {{ item.nomine2 }} {{ item.nomine3 }} {{ item.commentaire }}
+                        </p>
+                    {% else %}
+                        <a class="{{ elu }} inline col-md-12 "
+                           href="{{ path('app_default_nomines', {'domaine': item.domaine, 'annee': item.annee}) }}">
+                            {{ item.nomine1 }} {{ item.nomine2 }}{{ item.nomine3 }} {{ item.commentaire | raw }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+

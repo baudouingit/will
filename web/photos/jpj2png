@@ -1,0 +1,5 @@
+#!/bin/sh
+for img in *.jpg; do
+    filename=${img%.*}
+    convert "$filename.jpg" "$filename.png"
+done
