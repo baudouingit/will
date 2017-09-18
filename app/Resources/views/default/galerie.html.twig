@@ -1,0 +1,35 @@
+{% extends 'template.html.twig' %}
+{% block content %}
+    <style>
+        /*.galleria{ max-width: 1000px; height: 1000px; background: #000 }*/
+        /*.galleria{ max-width: 500px; height: 400px; background: #000 }*/
+    </style>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="galleria" style="margin: auto">
+                {% for item in photos %}
+                    {#{{ asset(path ~ '/' ~ item) }}#}
+                    <img src="{{ asset(path ~ '/' ~ item) }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            (function () {
+                Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.4.5/themes/classic/galleria.classic.min.js');
+                Galleria.run('.galleria', {
+                    responsive: true,
+                    showCounter: true,
+                    thumbnails: false,
+                    trueFullscreen: true,
+//                    height: 0.5625,
+                });
+            }());
+        </script>
+    {% endblock %}

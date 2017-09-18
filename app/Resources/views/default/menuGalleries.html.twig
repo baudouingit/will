@@ -1,0 +1,4 @@
+{% for gallery in galleries %}
+    {#<li><a href="{{ asset(photos) }}">{{ fichier|trim('.pdf')}}</a></li>#}
+    <li><a href="{{ path('app_default_galerie', {'galleries': gallery, 'index': "2"})}}">{{ gallery }}</a></li>
+{% endfor %}

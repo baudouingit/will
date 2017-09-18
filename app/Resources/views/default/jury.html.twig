@@ -1,0 +1,17 @@
+{% extends 'template.html.twig' %}
+{% block content %}
+    <div class="jury">
+        <ul>
+            {% for entity in entities %}
+                <li>
+                    <h2> {{ entity.prenom }} {{ entity.nom }}</h2>
+                </li>
+                <li>
+                    <img src={{ asset(entity.vignette) }} alt="{{ entity
+                    .vignette }}" style="float: left; padding-right: 5px;">
+                    {{ entity.notice | raw }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

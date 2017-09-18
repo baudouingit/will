@@ -1,0 +1,29 @@
+{% extends 'template.html.twig' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {% for item in nomines %}
+            {% if item.elu == true %}
+                {% set elu = 'elu' %}
+            {% else %}
+                {% set elu = '' %}
+            {% endif %}
+            {% if item.nomine2|trim %}
+                {% set separator1 = '-' %}
+            {% else %}
+                {% set separator1 = '' %}
+            {% endif %}
+            {% if item.nomine3|trim %}
+                {% set separator2 = '-' %}
+            {% else %}
+                {% set separator2 = '' %}
+            {% endif %}
+            <div>
+                <h2 class=" col-md-12 {{ elu }} " > {{ item.nomine1 }} {{ separator1 }} {{ item.nomine2 }} {{
+                    separator2 }} {{ item.nomine3 }}</h2>
+                <div class="col-md-12 {{ elu }} "><img  style="float: left; padding-right: 1em;" src={{ asset(item.photo) }} alt="{{ asset(item.photo) }}"/>{{ item.longcomm | raw }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

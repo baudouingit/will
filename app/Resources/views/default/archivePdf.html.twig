@@ -1,0 +1,47 @@
+{% extends 'template.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{#
+    <script type ="text/javascript">
+        <!--
+        function Redirect() {
+            window.location="";
+        }
+
+//        document.write("You will be redirected to main page in 1 sec.");
+        setTimeout('Redirect("#")', 0);
+        //-->
+    </script>
+#}
+
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="row">
+            <div class="content pdf-height">
+                {#http://localhost/pctd/web/pdf/1952-1982.pdf#}
+                {#<a id="href" href="http://localhost/pctd/web/1999-2000.pdf">{{ fichier|trim('.pdf') }}</a>#}
+
+                {#<a id="href" href="{{ asset(fichier) }}">1952-1982</a>#}
+
+                {#<object data="{{ asset(fichier) }}" type="application/pdf" width="100%" height="100%">#}
+                    {#alt : <a href="{{ asset(fichier) }}">test.pdf</a>#}
+                {#</object>#}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $("#href").trigger('click');
+        });
+    </script>
+{% endblock %}
+

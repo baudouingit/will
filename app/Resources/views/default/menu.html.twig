@@ -1,0 +1,4 @@
+{% for domaine in domaines %}
+    <li><a href="{{ path('app_default_nomines', {'domaine': domaine.domaine, 'annee': annee})}}">{{ domaine.domaine}}</a></li>
+{% endfor %}
+

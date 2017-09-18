@@ -1,0 +1,4 @@
+{% for fichier in fichiers %}
+    {#<li><a href="{{ asset(fichier) }}">{{ fichier|trim('.pdf')}}</a></li>#}
+    <li><a href="{{ path('app_default_archivepdf', {'fichier': fichier}) }}">{{ fichier|trim('.pdf') }}</a></li>
+{% endfor %}

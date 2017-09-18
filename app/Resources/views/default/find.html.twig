@@ -1,0 +1,15 @@
+{% extends 'template.html.twig' %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+            </form>
+        </div>                                  {# end div content #}
+    </div>                                      {# end div row #}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
